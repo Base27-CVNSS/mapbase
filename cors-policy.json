@@ -1,0 +1,24 @@
+[
+  {
+    "AllowedOrigins": [
+      "https://base27-cvnss.github.io"
+    ],
+    "AllowedMethods": [
+      "GET",
+      "HEAD"
+    ],
+    "AllowedHeaders": [
+      "Range"
+    ],
+    "ExposeHeaders": [
+      "Accept-Ranges",
+      "Content-Range",
+      "Content-Length",
+      "Content-Type",
+      "ETag",
+      "Cache-Control",
+      "Expires"
+    ],
+    "MaxAgeSeconds": 86400
+  }
+]
