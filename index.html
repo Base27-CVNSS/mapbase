@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b2745" />
+  <title>Vietflex Basemap | PMTiles WebGIS</title>
+  <meta name="description" content="Vietflex Basemap: PMTiles trên Cloudflare R2, HTTP Range Request và MapLibre GL JS." />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="app">
+    <div id="map" aria-label="Bản đồ nền Vietflex"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">VF</span>
+        <div>
+          <strong>VIETFLEX BASEMAP</strong>
+          <small>PMTiles · Cloudflare R2 · MapLibre</small>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span id="sourceState" class="status" data-state="loading">Đang kết nối</span>
+        <button id="fitBtn" type="button" title="Về toàn vùng Việt Nam và Biển Đông">Toàn vùng</button>
+      </div>
+    </header>
+
+    <section class="info-panel" aria-live="polite">
+      <div><span>Zoom</span><strong id="zoomValue">—</strong></div>
+      <div><span>Chế độ</span><strong id="zoomMode">—</strong></div>
+      <div><span>Tọa độ</span><strong id="coordValue">—</strong></div>
+    </section>
+
+    <aside id="errorPanel" class="error-panel" hidden>
+      <strong>Không đọc được PMTiles</strong>
+      <p id="errorMessage"></p>
+      <p>Kiểm tra tên object trên R2 và CORS/Range Request.</p>
+    </aside>
+
+    <footer class="attribution-custom">
+      Vietflex Basemap · Z3–Z11 tile thật · Z12+ overzoom
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
