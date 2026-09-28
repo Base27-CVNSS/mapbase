@@ -3,86 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b2745" />
-  <title>Vietflex Basemap | PMTiles WebGIS</title>
-  <meta name="description" content="Vietflex Basemap Z3–Z11 WebP trên Cloudflare R2, PMTiles và MapLibre GL JS." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Vietflex Map</title>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.13.0/dist/maplibre-gl.css"
         crossorigin="anonymous" />
-  <link rel="stylesheet" href="./styles.css?v=4" />
+
+  <!-- Vietflex VN stylesheet pinned to the requested commit -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Vietflexmap/VN@6144d565fcf236727577ab3c4471bbe49f86892f/dist/vietflex.css" />
+
+  <link rel="stylesheet" href="./styles.css?v=5" />
 </head>
 <body>
   <main id="app">
-    <div id="map" aria-label="Bản đồ nền Vietflex"></div>
+    <div id="map" aria-label="Bản đồ Vietflex"></div>
 
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark">VF</span>
-        <div>
-          <strong>VIETFLEX BASEMAP</strong>
-          <small>vietnam_biendong_webgis.pmtiles · Z3–Z11 · WebP</small>
-        </div>
-      </div>
+    <!-- Chỉ giữ nhận diện trực quan: cờ Việt Nam + Vietflex -->
+    <a class="vietflex-badge"
+       href="https://github.com/Vietflexmap/VN"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Vietflex">
+      <img
+        src="https://cdn.jsdelivr.net/gh/Vietflexmap/VN@6144d565fcf236727577ab3c4471bbe49f86892f/src/images/logo.svg"
+        alt=""
+        draggable="false" />
+    </a>
 
-      <div class="topbar-actions">
-        <span id="sourceState" class="status" data-state="loading">
-          Đang kết nối PMTiles
-        </span>
-
-        <button id="fitBtn" type="button" title="Về toàn vùng Việt Nam và Biển Đông">
-          Toàn vùng
-        </button>
-      </div>
-    </header>
-
-    <section class="info-panel" aria-live="polite">
-      <div>
-        <span>Zoom</span>
-        <strong id="zoomValue">—</strong>
-      </div>
-
-      <div>
-        <span>Chế độ</span>
-        <strong id="zoomMode">—</strong>
-      </div>
-
-      <div>
-        <span>Tọa độ</span>
-        <strong id="coordValue">—</strong>
-      </div>
-    </section>
-
-    <aside id="errorPanel" class="error-panel" hidden>
-      <strong id="errorTitle">Không đọc được PMTiles</strong>
+    <aside id="errorPanel" class="error-panel" hidden role="alert">
+      <strong id="errorTitle">Không đọc được bản đồ</strong>
       <p id="errorMessage"></p>
-      <p id="errorHint">
-        Kiểm tra vietnam_biendong_webgis.pmtiles trên R2 và HTTP Range Request.
-      </p>
     </aside>
-
-    <footer class="attribution-custom">
-      Vietflex Basemap · Z3–Z11 tile thật · Z12+ overzoom
-    </footer>
   </main>
-
-  <script>
-    window.addEventListener("error", function (event) {
-      const panel = document.getElementById("errorPanel");
-      const message = document.getElementById("errorMessage");
-      const state = document.getElementById("sourceState");
-
-      if (!panel || !message || !state) return;
-
-      panel.hidden = false;
-      message.textContent =
-        event.message || "Lỗi JavaScript khi khởi tạo WebGIS.";
-
-      state.dataset.state = "error";
-      state.textContent = "Lỗi khởi tạo";
-    });
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.13.0/dist/maplibre-gl.js"
           crossorigin="anonymous"></script>
@@ -90,7 +46,7 @@
   <script src="https://cdn.jsdelivr.net/npm/pmtiles@4.5.0/dist/pmtiles.js"
           crossorigin="anonymous"></script>
 
-  <script src="./config.js?v=4"></script>
-  <script src="./app.js?v=4"></script>
+  <script src="./config.js?v=5"></script>
+  <script src="./app.js?v=5"></script>
 </body>
 </html>
