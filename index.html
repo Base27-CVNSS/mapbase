@@ -6,9 +6,12 @@
   <meta name="theme-color" content="#0b2745" />
   <title>Vietflex Basemap | PMTiles WebGIS</title>
   <meta name="description" content="Vietflex Basemap: PMTiles trên Cloudflare R2, HTTP Range Request và MapLibre GL JS." />
-  <link rel="preconnect" href="https://unpkg.com" crossorigin />
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.css" />
-  <link rel="stylesheet" href="./styles.css" />
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.13.0/dist/maplibre-gl.css"
+        crossorigin="anonymous" />
+  <link rel="stylesheet" href="./styles.css?v=3" />
 </head>
 <body>
   <main id="app">
@@ -23,7 +26,7 @@
         </div>
       </div>
       <div class="topbar-actions">
-        <span id="sourceState" class="status" data-state="loading">Đang kết nối</span>
+        <span id="sourceState" class="status" data-state="loading">Đang kiểm tra PMTiles</span>
         <button id="fitBtn" type="button" title="Về toàn vùng Việt Nam và Biển Đông">Toàn vùng</button>
       </div>
     </header>
@@ -35,19 +38,35 @@
     </section>
 
     <aside id="errorPanel" class="error-panel" hidden>
-      <strong>Không đọc được PMTiles</strong>
+      <strong id="errorTitle">Không đọc được PMTiles</strong>
       <p id="errorMessage"></p>
-      <p>Kiểm tra tên object trên R2 và CORS/Range Request.</p>
+      <p id="errorHint">Kiểm tra object trên R2 và CORS/HTTP Range Request.</p>
     </aside>
 
     <footer class="attribution-custom">
-      Vietflex Basemap · Z3–Z11 tile thật · Z12+ overzoom
+      Vietflex Basemap · tile thật đến Z11 · Z12+ overzoom
     </footer>
   </main>
 
-  <script src="https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.js"></script>
-  <script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
-  <script src="./config.js"></script>
-  <script src="./app.js"></script>
+  <script>
+    window.addEventListener("error", function (event) {
+      const panel = document.getElementById("errorPanel");
+      const message = document.getElementById("errorMessage");
+      const state = document.getElementById("sourceState");
+      if (!panel || !message || !state) return;
+      panel.hidden = false;
+      message.textContent = event.message || "Lỗi JavaScript khi khởi tạo WebGIS.";
+      state.dataset.state = "error";
+      state.textContent = "Lỗi khởi tạo";
+    });
+  </script>
+
+  <!-- Pin về MapLibre 5.13.0: phiên bản đang được ví dụ chính thức PMTiles 4.5.0 sử dụng. -->
+  <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.13.0/dist/maplibre-gl.js"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pmtiles@4.5.0/dist/pmtiles.js"
+          crossorigin="anonymous"></script>
+  <script src="./config.js?v=3"></script>
+  <script src="./app.js?v=3"></script>
 </body>
 </html>
