@@ -12,26 +12,23 @@
         href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.13.0/dist/maplibre-gl.css"
         crossorigin="anonymous" />
 
-  <!-- Vietflex VN stylesheet pinned to the requested commit -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/Vietflexmap/VN@6144d565fcf236727577ab3c4471bbe49f86892f/dist/vietflex.css" />
 
-  <link rel="stylesheet" href="./styles.css?v=5" />
+  <link rel="stylesheet" href="./styles.css?v=6" />
 </head>
 <body>
   <main id="app">
     <div id="map" aria-label="Bản đồ Vietflex"></div>
 
-    <!-- Chỉ giữ nhận diện trực quan: cờ Việt Nam + Vietflex -->
-    <a class="vietflex-badge"
+    <a class="vietflex-source"
        href="https://github.com/Vietflexmap/VN"
        target="_blank"
        rel="noopener noreferrer"
-       aria-label="Vietflex">
-      <img
-        src="https://cdn.jsdelivr.net/gh/Vietflexmap/VN@6144d565fcf236727577ab3c4471bbe49f86892f/src/images/logo.svg"
-        alt=""
-        draggable="false" />
+       title="Mã nguồn Vietflex/VN"
+       aria-label="Mã nguồn Vietflex/VN">
+      <span class="vietflex-flag" aria-hidden="true">★</span>
+      <span class="vietflex-name">Vietflex</span>
     </a>
 
     <aside id="errorPanel" class="error-panel" hidden role="alert">
@@ -46,7 +43,7 @@
   <script src="https://cdn.jsdelivr.net/npm/pmtiles@4.5.0/dist/pmtiles.js"
           crossorigin="anonymous"></script>
 
-  <script src="./config.js?v=5"></script>
-  <script src="./app.js?v=5"></script>
+  <script src="./config.js?v=6"></script>
+  <script src="./app.js?v=6"></script>
 </body>
 </html>
