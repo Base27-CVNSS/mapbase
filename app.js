@@ -89,12 +89,12 @@
 
       map.addControl(
         new maplibregl.NavigationControl({ visualizePitch: true }),
-        "bottom-right"
+        "top-right"
       );
 
       map.addControl(
         new maplibregl.FullscreenControl(),
-        "bottom-right"
+        "top-right"
       );
 
       map.on("load", () => {
