@@ -25,43 +25,80 @@ body {
   background: #dbe6ee;
 }
 
-/* Nhận diện duy nhất trên bản đồ: logo Vietflex + cờ Việt Nam. */
-.vietflex-badge {
+/* Vietflex source mark: nhỏ, trong suốt, sát góc phải dưới. */
+.vietflex-source {
   position: absolute;
-  z-index: 10;
-  top: 12px;
-  left: 12px;
-  display: block;
-  width: 154px;
-  height: 34px;
-  overflow: hidden;
+  z-index: 12;
+  right: 7px;
+  bottom: 6px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin: 0;
+  padding: 0;
+
+  color: rgba(23, 50, 77, 0.78);
+  background: transparent;
   border: 0;
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 2px 10px rgba(15, 35, 55, 0.14);
+  box-shadow: none;
+
+  font: 600 10px/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
   text-decoration: none;
+
+  opacity: 0.9;
   user-select: none;
-  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.vietflex-badge img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  user-select: none;
+.vietflex-source:hover,
+.vietflex-source:focus-visible {
+  color: #17324d;
+  opacity: 1;
+  text-decoration: none;
 }
 
-/* Không hiển thị attribution/text chrome của MapLibre. */
+.vietflex-source:focus-visible {
+  outline: 1px solid rgba(23, 50, 77, 0.4);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.vietflex-flag {
+  width: 17px;
+  height: 11px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  border-radius: 2px;
+  background: #da251d;
+  color: #ffdf00;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.vietflex-name {
+  display: inline-block;
+  transform: translateY(0.2px);
+}
+
+/* Ẩn attribution text để giao diện chỉ còn map + icon controls + Vietflex source mark. */
 .maplibregl-ctrl-attrib {
   display: none !important;
 }
 
-/* Controls chỉ dùng biểu tượng. */
-.maplibregl-ctrl-bottom-right {
-  right: 10px;
-  bottom: 10px;
+/* Điều khiển MapLibre dời lên góc phải trên, tránh logo nguồn phía dưới. */
+.maplibregl-ctrl-top-right {
+  top: 8px;
+  right: 8px;
 }
 
 .maplibregl-ctrl-group {
@@ -75,13 +112,18 @@ body {
   z-index: 20;
   left: 12px;
   bottom: 12px;
+
   max-width: min(440px, calc(100vw - 24px));
   padding: 10px 12px;
+
   border: 1px solid rgba(170, 40, 30, 0.25);
   border-radius: 9px;
+
   background: rgba(255, 248, 247, 0.96);
   color: #76231e;
+
   box-shadow: 0 4px 18px rgba(84, 19, 15, 0.12);
+
   font: 12px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -90,15 +132,21 @@ body {
 }
 
 @media (max-width: 640px) {
-  .vietflex-badge {
-    top: 8px;
-    left: 8px;
-    width: 132px;
-    height: 29px;
+  .vietflex-source {
+    right: 6px;
+    bottom: 5px;
+    gap: 3px;
+    font-size: 9px;
   }
 
-  .maplibregl-ctrl-bottom-right {
-    right: 8px;
-    bottom: 8px;
+  .vietflex-flag {
+    width: 15px;
+    height: 10px;
+    font-size: 7px;
+  }
+
+  .maplibregl-ctrl-top-right {
+    top: 6px;
+    right: 6px;
   }
 }
